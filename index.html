@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Live SOXL Chart -->
+<div class="chart-container">
+  <h2>Live SOXL Stock Chart</h2>
+  <div id="tradingview-widget"></div>
+</div>
+
   <div class="container">
     <h1>Stock Profit Calculator</h1>
     <label>Stock Symbol: <input type="text" id="stockSymbol" value="SOXL" /></label>
@@ -17,5 +23,26 @@
     <div id="output"></div>
   </div>
   <script src="app.js"></script>
+  <!-- TradingView Widget BEGIN -->
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+  new TradingView.widget({
+    "width": "100%",
+    "height": 500,
+    "symbol": "NASDAQ:SOXL",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "hide_side_toolbar": false,
+    "allow_symbol_change": true,
+    "container_id": "tradingview-widget"
+  });
+</script>
+<!-- TradingView Widget END -->
+
 </body>
 </html>
