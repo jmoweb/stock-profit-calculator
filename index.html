@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stock Profit Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Stock Profit Calculator</h1>
+    <label>Stock Symbol: <input type="text" id="stockSymbol" value="SOXL" /></label>
+    <label>Shares: <input type="number" id="shares" /></label>
+    <label>Entry Price ($): <input type="number" id="entryPrice" step="0.01" /></label>
+    <label>Exit Price ($): <input type="number" id="exitPrice" step="0.01" /></label>
+    <button onclick="calculateProfit()">Calculate</button>
+    <div id="output"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
