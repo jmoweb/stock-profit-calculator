@@ -1,22 +1,18 @@
-function calculateProfit() {
-  const shares = parseFloat(document.getElementById('shares').value);
-  const entryPrice = parseFloat(document.getElementById('entryPrice').value);
-  const exitPrice = parseFloat(document.getElementById('exitPrice').value);
-  const stockSymbol = document.getElementById('stockSymbol').value;
+function calculateTarget() {
+  const shares = parseFloat(document.getElementById("targetShares").value);
+  const entryPrice = parseFloat(document.getElementById("targetEntryPrice").value);
+  const desiredReturn = parseFloat(document.getElementById("desiredReturn").value);
 
-  if (isNaN(shares) || isNaN(entryPrice) || isNaN(exitPrice)) {
-    document.getElementById('output').textContent = 'Please enter valid numbers.';
+  if (isNaN(shares) || isNaN(entryPrice) || isNaN(desiredReturn)) {
+    document.getElementById("targetOutput").innerText = "Please fill in all fields correctly.";
     return;
   }
 
-  const totalInvestment = shares * entryPrice;
-  const totalSell = shares * exitPrice;
-  const profit = totalSell - totalInvestment;
-  const percentGain = ((exitPrice - entryPrice) / entryPrice) * 100;
+  const targetPrice = entryPrice * (1 + desiredReturn / 100);
+  const totalProfit = shares * (targetPrice - entryPrice);
 
-  document.getElementById('output').innerHTML =
-    `<p><strong>${stockSymbol}</strong><br>
-    Invested: $${totalInvestment.toFixed(2)}<br>
-    Returned: $${totalSell.toFixed(2)}<br>
-    Profit: $${profit.toFixed(2)} (${percentGain.toFixed(2)}%)</p>`;
+  document.getElementById("targetOutput").innerHTML =
+    `To achieve a ${desiredReturn}% return:<br>
+    Sell at: <strong>$${targetPrice.toFixed(2)}</strong><br>
+    Expected Profit: <strong>$${totalProfit.toFixed(2)}</strong>`;
 }
