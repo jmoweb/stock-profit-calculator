@@ -6,41 +6,43 @@
   <title>Stock Profit Calculator</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .container-wrapper {
+    .main-wrapper {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 30px;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px;
     }
 
-    .container {
-      width: 45%;
-      min-width: 300px;
+    .container, .target-container {
+      flex: 1 1 45%;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
       background-color: #f9f9f9;
     }
 
-    input[type="number"], input[type="text"] {
-      width: 100%;
-      padding: 6px;
-      margin-top: 4px;
-      margin-bottom: 12px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
+    label {
+      display: block;
+      margin-bottom: 10px;
     }
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
     }
 
     button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 16px;
+      padding: 10px 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    #output, #targetOutput {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -52,54 +54,11 @@
     <div id="tradingview-widget"></div>
   </div>
 
-  <div class="container-wrapper">
+  <div class="main-wrapper">
 
-    <!-- Original Profit Calculator -->
+    <!-- Profit Calculator -->
     <div class="container">
       <h1>Stock Profit Calculator</h1>
       <label>Stock Symbol: <input type="text" id="stockSymbol" value="SOXL" /></label>
       <label>Shares: <input type="number" id="shares" /></label>
-      <label>Entry Price ($): <input type="number" id="entryPrice" step="0.01" /></label>
-      <label>Exit Price ($): <input type="number" id="exitPrice" step="0.01" /></label>
-      <button onclick="calculateProfit()">Calculate</button>
-      <div id="output"></div>
-    </div>
-
-    <!-- New Target Price Calculator -->
-    <div class="container">
-      <h1>Target Price Calculator</h1>
-      <label>Shares: <input type="number" id="targetShares" /></label>
-      <label>Entry Price ($): <input type="number" id="targetEntryPrice" step="0.01" /></label>
-      <label>Desired Return (%) <small>(e.g., 8 for 8%)</small>: 
-        <input type="number" id="desiredReturn" step="0.1" />
-      </label>
-      <button onclick="calculateTarget()">Calculate</button>
-      <div id="targetOutput"></div>
-    </div>
-
-  </div>
-
-  <script src="app.js"></script>
-
-  <!-- TradingView Widget -->
-  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-  <script type="text/javascript">
-    new TradingView.widget({
-      "width": "100%",
-      "height": 500,
-      "symbol": "NASDAQ:SOXL",
-      "interval": "D",
-      "timezone": "Etc/UTC",
-      "theme": "light",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "hide_side_toolbar": false,
-      "allow_symbol_change": true,
-      "container_id": "tradingview-widget"
-    });
-  </script>
-
-</body>
-</html>
+      <label>Entry Price ($): <input type="number" id="e
